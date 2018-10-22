@@ -1,12 +1,15 @@
- <form action="/viktorija_valsoe_shopping/redirect_without_login.php" method="POST">
- 
- <p>Enter Username</p>
+<form action="register.php" method="POST">
+ <p>Enter Email</p>
  <label class="sr-only" for="email">Email</label>
  <input id="email" type="email" name="email" placeholder="Email" required>
  <br>
+ <p>Enter Username</p>
+ <label class="sr-only" for="register_username">Username</label>
+ <input id="register_username" type="text" name="username" placeholder="Username" required>
+ <br>
  <p>Enter Password</p>
- <label class="sr-only" for="password">Email</label>
- <input id="password" type="password" name="password" placeholder="Email" required>
+ <label class="sr-only" for="register_password">Password</label>
+ <input id="register_password" type="password" name="password" placeholder="Password" required>
  <br>
  <br>
  <p>Shipping Address</p>
@@ -20,7 +23,8 @@
  <input id="lname" type="text" name="lname" placeholder="Last name" required>
      </div>
  </div>
-  <br>
+ 
+   <br>
  <label class="sr-only" for="address1">Address 1</label>
  <input id="address1" type="text" name="address" placeholder="Address" required>
   <br>
@@ -43,9 +47,11 @@
  <input id="country" type="text" name="country" placeholder="Country" required>
  
  <br>
+
  <label class="sr-only" for="telephone">telephone</label>
  <input id="telephone" type="tel" name="telephone" placeholder="Phone number" required>
 <br> 
-  <input type="submit" value="Proceed">
- <br>
+  <input type="submit" value="Register">
+ <br> 
  </form> 
+ 
