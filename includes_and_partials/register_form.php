@@ -1,4 +1,4 @@
-<form action="register.php" method="POST">
+<form action="views/register.php" method="POST">
  <p>Enter Email</p>
  <label class="sr-only" for="email">Email</label>
  <input id="email" type="email" name="email" placeholder="Email" required>
