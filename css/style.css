@@ -1,0 +1,165 @@
+/*Navigation*/
+html{
+    width: 100%;
+}
+
+h2{
+    color: black;
+    font-size: 1rem;
+  /*  text-align: center; */
+    font-family: 'Open Sans', sans-serif;
+    font-style: italic;
+    text-transform: uppercase;
+    margin-top: 1rem;
+}
+
+p{
+  /*  text-align: center; */  
+}
+
+/*Navigation*/
+
+.navbar-brand{
+     font-family: 'Mr Dafoe', cursive; 
+     font-size: 3rem;
+}
+
+
+i {
+    font-size: 1rem;  
+}
+
+
+li {
+    list-style: none;
+    margin: 2%;
+
+}
+
+li > a {
+    color: black;
+    padding-right: 10px;
+}
+
+li > a:hover {
+    color: hotpink;
+    text-decoration: none
+}
+
+.container{
+    margin-top: 100px;
+}
+/*hero image*/
+.hero_image{
+    margin-bottom: 2rem;
+    padding: 0;
+    background-image: url(/viktorija_valsoe_shopping/images/hero_image_png.png);
+    height: 250px;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  
+}
+
+
+/*product styling*/
+.image_frame {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    
+}
+
+
+/*Checkout styling*/
+
+/*Form styling*/
+
+input[type=text], input[type=email],
+input[type=tel],
+input[type=password]{
+    margin: 20px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+input[type=number] {
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    
+}
+
+input[type=submit]:hover {
+    background-color: hotpink;
+}
+
+input[type=reset] {
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  
+}
+
+input[type=reset]:hover {
+    background-color: hotpink;
+}
+
+
+.quantity{
+    background-color: #f2f2f2;
+}
+
+footer{
+    color: white;
+    padding: 2rem;
+    background-color: black;
+    margin-bottom: 0;
+  
+}
+
+
+/*media queries*/
+
+@media screen and (max-width: 767px) and (min-width: 540px){
+
+}
+@media (min-width: 992px) {
+    i {
+    font-size: 1.5rem;
+    padding: 1rem;  
+}
+.hero_image{
+ height: 400px;
+    
+}
+}
+
+
+
+
+
+
