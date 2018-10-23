@@ -24,7 +24,7 @@ require "includes_and_partials/head.php";
             ?>
             <!--PRODUCT GALLERY-->
 
-            <form action="/viktorija_valsoe_crud/shopping_card.php" id="form1" method='post'>
+            <form action="/viktorija_valsoe_crud/customer_login_page.php" id="form1" method='post'>
                 <section class="product_gallery">
                     <div class="row product_wrapper justify-content-center">
 
