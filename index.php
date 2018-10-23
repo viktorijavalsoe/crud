@@ -1,15 +1,15 @@
 <?php
 session_start();
-require "partials/head.php";
+require "includes_and_partials/head.php";
 ?>
 
 <body>
     <?php
-    require "partials/navigation.php";
+    require "includes_and_partials/navigation.php";
     ?>
     <main>
         <section>
-            <?php include_once"partials/hero_image.php"?>
+            <?php include_once"includes_and_partials/hero_image.php"?>
         </section>
 
         <div class="container">
@@ -18,20 +18,13 @@ require "partials/head.php";
                 <hr>
             </div>
 
-            <?php
-    // if allready logged in
-            if(isset($_GET["welcome"])){
-			echo "<h2 style='color:hotpink;'>Welcome ".$_GET["welcome"]."</h2><br>";
-		}
-        
-           
-            
+            <?php         
             /*PRODUCT ARRAY*/
-            require "partials/product_array.php";
+            require "includes_and_partials/product_array.php";
             ?>
             <!--PRODUCT GALLERY-->
 
-            <form action="/viktorija_valsoe_shopping/shopping_card.php" id="form1" method='post'>
+            <form action="/viktorija_valsoe_crud/shopping_card.php" id="form1" method='post'>
                 <section class="product_gallery">
                     <div class="row product_wrapper justify-content-center">
 
@@ -40,8 +33,8 @@ require "partials/head.php";
        foreach($all_products as $single_product){?>
                         <div class="col-12 col-md-6 product_container">
                             <?php
-           
-                            require "partials/reset_quantities_index_page.php";
+                         // change to require when //imported
+                            include "includes_and_partials/reset_quantities_index_page.php";
                             ?>
                             <?php echo $single_product["image"];?>
                             <?php echo "<h2>".$single_product["title"]."</h2>"; ?>
@@ -77,9 +70,8 @@ require "partials/head.php";
     <?php
     
       
-    include "partials/footer.php";
-      
-    require"partials/bootstrap_components.php";
+    include "includes_and_partials/footer.php";
+    require"includes_and_partials/bootstrap_components.php";
     ?>
 </body>
 

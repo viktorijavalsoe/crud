@@ -22,7 +22,7 @@
 
             </div>
 
-            <a class="navbar-brand mx-auto" href="/viktorija_valsoe_shopping/index.php">Don't Panic</a>
+            <a class="navbar-brand mx-auto" href="/viktorija_valsoe_crud/index.php">Don't Panic</a>
 
             <div class="collapse navbar-collapse" id="navbar_menu">
 
