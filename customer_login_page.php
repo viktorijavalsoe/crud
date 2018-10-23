@@ -5,9 +5,10 @@ require "includes_and_partials/head.php";
 include_once "includes_and_partials/hero_image.php";
 ?>
 
-<body id="checkout">
+<body id="login_page">
     <?php
     include "includes_and_partials/navigation.php";
+    include "includes_and_partials/shopping_card.php";
     ?>
 
     <div class="container">

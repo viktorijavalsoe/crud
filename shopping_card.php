@@ -100,26 +100,6 @@
             
             <div class="col-6 col-md-2">
               
-            <?php
-            //LAGRE I MySQL databasen       
-                 require "includes_and_partials/database_connection.php"; 
-                
-                
-                $name = $product_in_the_cart["title"];
-                $price = $product_in_the_cart["price"];
-                $qty = $product_in_the_cart["quantity"];
-                
-                 $statement = $pdo->prepare("INSERT INTO shopping_cart (name, price, quantity) VALUES (:name, :price, :quantity)");
-                 
-                 $statement->execute(
-                   [
-                    ":name" => $name,
-                    ":price" => $price,
-                    ":quantity" => $qty  
-                   ]
-                 );
-                      
-            ?>  
                
                 <!---wrong includes-->
                 <form action="/viktorija_valsoe_shopping/remove_item.php" method='post'>
@@ -129,6 +109,41 @@
             </div>
 
             <?php
+                
+            //LAGRE I MySQL databasen       
+                require "includes_and_partials/database_connection.php"; 
+                            
+                $name = $product_in_the_cart["title"];
+                $price = $product_in_the_cart["price"];
+                $qty = $product_in_the_cart["quantity"];
+                
+                 $insert = $pdo->prepare("INSERT INTO shopping_cart (name, price, qty) VALUES (:name, :price, :qty)");
+                
+                 if(!empty($name) || !empty($price)){
+                     echo "<br> yeei <br>";
+                 }else{
+                     echo "neei";
+                 }
+{
+// continue with code processing
+}   
+                   
+                 $insert->execute(
+                   [
+                    ":name" => $name,
+                    ":price" => $price,
+                    ":qty" => $qty  
+                   ]
+                 );
+                 
+                   
+                   if ($insert->execute()) {
+                    echo "Created";
+                    } else {
+                    echo "Something is fucked";
+                 } 
+                      
+            
                }
            ?>
         </div>
@@ -147,10 +162,10 @@
             ?>
         </div>
 
-        <form action="/viktorija_valsoe_shopping/customer_login_page.php" method='get'>
+        <form action="/viktorija_valsoe_crud/customer_login_page.php" method='get'>
             <input type="submit" value="Checkout">
         </form>
-        <form action="/viktorija_valsoe_shopping/reset.php" method='get'>
+        <form action="/viktorija_valsoe_crud/views/reset.php" method='get'>
             <input type="submit" onclick="alert('Are you sure you want to empty your card?')" value="Empty Card">
         </form>
 
