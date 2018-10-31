@@ -29,10 +29,10 @@
                 <ul class="navbar-nav navbar-left ml-auto">
 
                     <li class="nav-item">
-                        <a class="current"  href="/viktorija_valsoe_shopping/index.php">Shop</a> </li>
+                        <a class="current"  href="/viktorija_valsoe_crud/index.php">Shop</a> </li>
 
                     <li class="nav-item">
-                        <a href="/viktorija_valsoe_shopping/redirect_allready_loggedin.php">Login</a> </li>
+                        <a href="/viktorija_valsoe_crud/customer_login_page.php">Login</a> </li>
             
                 </ul>
 

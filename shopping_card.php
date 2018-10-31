@@ -14,33 +14,10 @@
     <div class="container">
 
         <h1>Shopping Card</h1>
+        
 
         <hr>
-
-        <?php      
-     if ( isset($_POST) && isset($_POST['quantities'])) {
-  // echo print_r($_POST['quantities']);
-    //tömmer session foer den skaper den
-        unset($_SESSION["shopping_card"]);
-         
-        foreach($_POST['quantities'] as $title => $quantity){
-          $_SESSION[$title] = $quantity;
-          if ($quantity){ 
-              $product = $all_products[array_search($title, array_column($all_products, 'title'))];
-              $product["quantity"] = $quantity;
-              $product["total"] = $product["price"] * $quantity;
-                
-/*
-*shopping_card[]" - [] skaper array 
-*shopping_card[]" - holder ulike verdier av product i en array
-*/  
-              $_SESSION["shopping_card"][] = $product;
-                
-            }
-        }
-     } 
-  ?>
-
+        
         <div class="row">
             <div class="col d-none col-md-2">
             </div>
@@ -101,9 +78,8 @@
             <div class="col-6 col-md-2">
               
                
-                <!---wrong includes-->
-                <form action="/viktorija_valsoe_shopping/remove_item.php" method='post'>
-                    <input type="hidden" value="<?php echo $product_in_the_cart[" title"]?>" name="reset">
+                <form action="/viktorija_valsoe_crud/includes_and_partials/remove_item.php" method='post'>
+                    <input type="hidden" value="reset[<?php echo $product_in_the_cart["title"]?>]" name="reset">
                     <input type="submit" name="submit" value="remove">
                 </form>
             </div>
@@ -112,37 +88,35 @@
                 
             //LAGRE I MySQL databasen       
                 require "includes_and_partials/database_connection.php"; 
-                            
+                $image = $product_in_the_cart["image"];           
                 $name = $product_in_the_cart["title"];
                 $price = $product_in_the_cart["price"];
                 $qty = $product_in_the_cart["quantity"];
+                $purchased_by = $_SESSION["username"];
                 
-                 $insert = $pdo->prepare("INSERT INTO shopping_cart (name, price, qty) VALUES (:name, :price, :qty)");
-                
-                 if(!empty($name) || !empty($price)){
-                     echo "<br> yeei <br>";
-                 }else{
-                     echo "neei";
-                 }
+                 $insert = $pdo->prepare("INSERT INTO shopping_cart (image, name, price, qty, purchased_by) VALUES (:image, :name, :price, :qty, :purchased_by)");
+               
 {
 // continue with code processing
 }   
                    
                  $insert->execute(
                    [
+                    ":image" => $image,
                     ":name" => $name,
                     ":price" => $price,
-                    ":qty" => $qty  
+                    ":qty" => $qty,
+                    ":purchased_by" => $purchased_by
                    ]
                  );
                  
-                   
+                /* check if values been inserted into Mysql  
                    if ($insert->execute()) {
                     echo "Created";
                     } else {
                     echo "Something is fucked";
                  } 
-                      
+                */      
             
                }
            ?>
@@ -153,7 +127,7 @@
         <div style="text-align:right">
            
             <?php       
-               if($total_sum == 0){
+               if($total_quantity == 0){
                  echo "Your Shopping card is empty!";
                  } else {
                    echo "Total sum for your purchase is $".$total_sum;
@@ -162,7 +136,7 @@
             ?>
         </div>
 
-        <form action="/viktorija_valsoe_crud/customer_login_page.php" method='get'>
+        <form action="/viktorija_valsoe_crud/checkout_page.php" method='get'>
             <input type="submit" value="Checkout">
         </form>
         <form action="/viktorija_valsoe_crud/views/reset.php" method='get'>
