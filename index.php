@@ -24,7 +24,7 @@ require "includes_and_partials/head.php";
             ?>
             <!--PRODUCT GALLERY-->
 
-            <form action="/viktorija_valsoe_crud/customer_login_page.php" id="form1" method='post'>
+            <form action="/viktorija_valsoe_crud/views/confirm.php" id="form1" method='post'>
                 <section class="product_gallery">
                     <div class="row product_wrapper justify-content-center">
 
@@ -32,10 +32,9 @@ require "includes_and_partials/head.php";
 //Looper gjennom  $all_products for att skrive en og en produkt                 
        foreach($all_products as $single_product){?>
                         <div class="col-12 col-md-6 product_container">
-                            <?php
-                         // change to require when //imported
-                            include "includes_and_partials/reset_quantities_index_page.php";
-                            ?>
+                           <?php /* what does this do?
+                            require "includes_and_partials/reset_quantities_index_page.php";
+                            */ ?> 
                             <?php echo $single_product["image"];?>
                             <?php echo "<h2>".$single_product["title"]."</h2>"; ?>
                             <?php echo "<p>$ ".$single_product["price"]."</p>"; ?>

@@ -1,7 +1,8 @@
 <?php
   session_start();
   
-  require "includes_and_partials/head.php"
+  require "includes_and_partials/head.php";
+  include "includes_and_partials/database_connection.php" ;     
 ?>
 
 <body>
@@ -12,60 +13,112 @@
     <div class="container">
         <h2>Thank you for your order</h2>
         <p>Delivery Address:</p>
+        
+        <!--Hente adressen fra MySQL-->
+        <?php
+             if(isset($_SESSION["username"])){
+              $username = $_SESSION["username"];
+              
+              $statement = $pdo ->prepare(
+                  "SELECT *
+                  FROM users
+                  WHERE username = :username"   
+              );
+               
+              $statement->execute(
+                [
+                  ":username" => $username
+                ]
+              );
+              
+              $users = $statement->fetchAll(PDO::FETCH_ASSOC);
+                 
+              foreach($users as $user):
+              
+                 echo $user["fname"]." ".$user["lname"]."<br>";
+                 echo $user["address"]."<br>";
+                 echo $user["zip_code"]." ".$user["city"]."<br>";
+                 echo $user["country"]."<br>";
 
-
+        endforeach;
+        }
+        ?>
+        
         <h2>Order Summary</h2>
         <hr>
-
-        <?php        
-    if (isset ($_SESSION["shopping_card"])) {
-    $total_sum = 0;
-    $total_quantity = 0; 
+        
+        <?php
+          if(isset($_SESSION["username"])):
+                $username = $_SESSION["username"];
+              
+                $statement = $pdo ->prepare(
+                  "SELECT *
+                  FROM shopping_cart
+                  JOIN users
+                  ON shopping_cart.purchased_by = users.username
+                  HAVING users.username = :username"
+              );
+                
+                $statement->execute(
+                    [
+                     ":username" => $username
+                    ]
+              );
+        
+                $shopping_cart = $statement->fetchAll(PDO::FETCH_ASSOC);
+             
+                $total_sum = 0;
         ?>
-        <div class="row">
-            <?php    
-    foreach($_SESSION["shopping_card"] as $product_in_the_cart){
-    $total_sum += $product_in_the_cart["total"];
-    $total_quantity += $product_in_the_cart["quantity"];
+         <div class="row">
+
+            <?php
+               foreach($shopping_cart as $product): 
+             ?>
+            <div class="col-12 col-md-2 product_image">
+                <?= $product["image"]; ?>
+            </div>
+
+            <div class="col-12 col-md-2 product_image">
+                <?= $product["name"]; ?>
+            </div>
+
+            <div class="col-12 col-md-2 product_image">
+                <?= "$".$product["price"]; ?>
+            </div>
+
+            <div class="col-12 col-md-2 product_image">
+                <?= $product["qty"]; ?>
+            </div>
+
+            <div class="col-12 col-md-2 product_image">
+                <?php $total_saved_product = $product["qty"] * $product["price"];
+                $total_sum += $total_saved_product;?>
+                <?= "Total: $".$total_saved_product; ?>
+            </div>
+
+            <div class="col-6 col-md-2">
+            
+            </div>
+            
+
+            <?php
+              endforeach;
+              ?>
+          </div>
+          <hr>
+          
+           <div style="text-align:right">
+           <?="Total sum for your purchase is $".$total_sum;?>
+           </div>
+          
+         <?php
+          endif;
+           
+        
         ?>
-            <div class="col-12 col-md-3 product_image">
-                <?php echo $product_in_the_cart["image"]."<br>";?>
-            </div>
-            <div class="col-12 col-md-2">
-                <?php echo $product_in_the_cart["title"]."<br>";?>
-            </div>
-
-            <div class="col-12 col-md-2">
-                <?php echo "$".$product_in_the_cart["price"]."<br>"; ?>
-            </div>
-            <div class="col-12 col-md-2">
-                <?php echo $product_in_the_cart["quantity"]."<br>";?>
-            </div>
-            <div class="col-12 col-md-2">
-                <?php echo "Total: $".$product_in_the_cart["total"]."<br>"; ?>
-            </div>
-
-            <?php } ?>
-        </div>
-
-        <hr>
-
-        <div style="text-align:right">
-            <?php       
-     if($total_sum == 0){
-         echo "Your Shopping card is empty!";
-     }else{
-         echo "Total sum for your purchase is $".$total_sum;
-       
-     }
- 
-    }
-
- ?>
- 
-  <form action="/viktorija_valsoe_crud/views/log_out.php" method='get'>
-            <input type="submit" value="Log Out">
-        </form>
+            <form action="/viktorija_valsoe_crud/views/log_out.php" method='get'>
+                <input type="submit" value="Log Out">
+            </form>
 
 
             <!--checkout_container-->
