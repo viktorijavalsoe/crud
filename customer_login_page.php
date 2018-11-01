@@ -12,7 +12,7 @@ include_once "includes_and_partials/hero_image.php";
     ?>
 
     <div class="container">
-        <h1>Check out</h1>
+        <h1>Log in</h1>
 
         <hr>
         <!-- Customer log inn -->
@@ -24,7 +24,7 @@ include_once "includes_and_partials/hero_image.php";
                 <?php
  require "includes_and_partials/sign_in_form.php";     
      ?>
-                <h2>Processed without login</h2>
+                <h2>Proceed without login</h2>
                 <br>
                 <?php
      require "includes_and_partials/register_form.php";

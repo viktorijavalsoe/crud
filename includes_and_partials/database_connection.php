@@ -13,6 +13,8 @@ try {$pdo = new PDO(
      "root"
      );
      
+     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+     
     // echo "Connected";
     } catch (PDOException $error) {
       echo 'Error: ' . $error->getMessage();
