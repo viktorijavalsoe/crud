@@ -32,7 +32,7 @@
                         <a class="current"  href="/viktorija_valsoe_crud/index.php">Shop</a> </li>
 
                     <li class="nav-item">
-                        <a href="/viktorija_valsoe_crud/customer_login_page.php">Login</a> </li>
+                        <a href="/viktorija_valsoe_crud/views/confirm.php">Login</a> </li>
             
                 </ul>
 

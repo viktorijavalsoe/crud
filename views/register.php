@@ -39,7 +39,8 @@ $statement->execute(
     ":address" => $address,
     ":zip_code" => $zip,  
     ":city" => $city,
-    ":country" => $country  ]
+    ":country" => $country  
+    ]
 
 );
 
