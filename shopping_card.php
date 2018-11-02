@@ -41,9 +41,11 @@
 
         <hr>
         <div class="row">
-
+            
             <?php
-               foreach($shopping_cart as $product): ?>
+               foreach($shopping_cart as $product): 
+              
+            ?>
             <div class="col-12 col-md-2 product_image">
                 <?= $product["image"]; ?>
             </div>
@@ -71,7 +73,7 @@
                 <!--delete product that is saved in MySQL-->
 
                 <form action="/viktorija_valsoe_crud/views/remove_item_mysql.php" method='post'>
-                    <input type="hidden" value="<?php echo $product[" product_id"]?>" name="delete">
+                    <input type="hidden" value="<?php echo $product["product_id"]?>" name="delete">
                     <input type="submit" name="submit" value='remove'>
                 </form>
             </div>
@@ -152,7 +154,7 @@
 
 
                 <form action="/viktorija_valsoe_crud/includes_and_partials/remove_item.php" method='post'>
-                    <input type="hidden" value="reset[<?php echo $product_in_the_cart[" title"]?>]" name="reset">
+                    <input type="hidden" value="reset[<?php echo $product_in_the_cart["title"]?>]" name="reset">
                     <input type="submit" name="submit" value="remove">
                 </form>
             </div>
