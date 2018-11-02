@@ -11,12 +11,11 @@
     ?>
 
     <div class="container">
-        <h2>Thank you for your order</h2>
         <p>Delivery Address:</p>
         
-        <!--Hente adressen fra MySQL-->
+        <!--adressen fra MySQL-->
         <?php
-             if(isset($_SESSION["username"])){
+             if(isset($_SESSION["username"])):
               $username = $_SESSION["username"];
               
               $statement = $pdo ->prepare(
@@ -41,7 +40,7 @@
                  echo $user["country"]."<br>";
 
         endforeach;
-        }
+        endif;
         ?>
         
         <h2>Order Summary</h2>
@@ -116,11 +115,10 @@
            
         
         ?>
-            <form action="/viktorija_valsoe_crud/views/log_out.php" method='get'>
-                <input type="submit" value="Log Out">
+           <form action="/viktorija_valsoe_crud/confirm_order.php" method='get'>
+                <input type="submit" value="Order">
             </form>
-
-
+            
             <!--checkout_container-->
         </div>
         <?php

@@ -23,7 +23,10 @@ require "includes_and_partials/head.php";
             require "includes_and_partials/product_array.php";
             ?>
             <!--PRODUCT GALLERY-->
-
+            
+            <!--
+            Sjekker om man allerede er innlogget på confirm side for å enten sende brukeren til innloggingsside eller direkte til shopping card
+            -->
             <form action="/viktorija_valsoe_crud/views/confirm.php" id="form1" method='post'>
                 <section class="product_gallery">
                     <div class="row product_wrapper justify-content-center">
@@ -32,9 +35,7 @@ require "includes_and_partials/head.php";
 //Looper gjennom  $all_products for att skrive en og en produkt                 
        foreach($all_products as $single_product){?>
                         <div class="col-12 col-md-6 product_container">
-                           <?php /* what does this do?
-                            require "includes_and_partials/reset_quantities_index_page.php";
-                            */ ?> 
+                             
                             <?php echo $single_product["image"];?>
                             <?php echo "<h2>".$single_product["title"]."</h2>"; ?>
                             <?php echo "<p>$ ".$single_product["price"]."</p>"; ?>
@@ -44,6 +45,7 @@ require "includes_and_partials/head.php";
 
                             <label class="sr-only" for="reset">Reset</label>
                             <input id="reset" name="reset" type="reset" value="Reset">
+                           
                             <div class="col d-md-none">
                                 <hr>
                             </div>

@@ -17,7 +17,7 @@
         <h1>Shopping Card</h1>
 
         <!--Produkter fra MySQL-->
-        
+
         <?php
           if(isset($_SESSION["username"])){
               $username = $_SESSION["username"];
@@ -41,7 +41,7 @@
 
         <hr>
         <div class="row">
-            
+
             <?php
                foreach($shopping_cart as $product): 
               
@@ -54,7 +54,7 @@
                 <?= $product["name"]; ?>
             </div>
 
-            <div class="col-12 col-md-2"> 
+            <div class="col-12 col-md-2">
                 <?= "$".$product["price"]; ?>
             </div>
 
@@ -64,7 +64,7 @@
 
             <div class="col-12 col-md-2">
                 <?php $total_saved_product = $product["qty"] * $product["price"];?>
-                
+
                 <?= "Total: $".$total_saved_product; ?>
             </div>
 
@@ -154,7 +154,7 @@
 
 
                 <form action="/viktorija_valsoe_crud/includes_and_partials/remove_item.php" method='post'>
-                    <input type="hidden" value="reset[<?php echo $product_in_the_cart["title"]?>]" name="reset">
+                    <input type="hidden" value="reset[<?php echo $product_in_the_cart[" title"]?>]" name="reset">
                     <input type="submit" name="submit" value="remove">
                 </form>
             </div>
